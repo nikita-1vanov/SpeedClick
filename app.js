@@ -7,7 +7,7 @@ const TIME_LIST = [];
 
 const speedButtonHtml =
   '<button class="button speed_button" onclick="clickProcessing()"></button>';
-const resetTestHtml = '<a href="/">Test again</a>';
+const resetTestHtml = '<a onclick="location.reload()">Test again</a>';
 
 const startBlockSelector = document.querySelector(".start");
 const finalBlockSelector = document.querySelector(".final");
