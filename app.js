@@ -2,12 +2,12 @@
 
 const WINDOW_WIDTH = window.innerWidth;
 const WINDOW_HIGHT = window.innerHeight;
-const MAX_COUNT_CLICK = 51;
+const MAX_COUNT_CLICK = 7;
 const TIME_LIST = [];
 
 const speedButtonHtml =
-  '<button class="button speed_button" onclick="clickProcessing()"></button>';
-const resetTestHtml = '<a onclick="location.reload()">Test again</a>';
+  '<button class="button speed_button" onclick="clickProcessing()">Click</button>';
+const resetTestHtml = '<a onclick="location.reload()">Run again</a>';
 
 const startBlockSelector = document.querySelector(".start");
 const finalBlockSelector = document.querySelector(".final");
@@ -32,7 +32,18 @@ function getSpeedClick(times) {
     sum += res;
   }
 
-  return 1000 / (sum / times.length);
+  return (1000 / (sum / times.length)).toFixed(2);
+}
+
+function changeBestResult(time) {
+  let currentBestResult = localStorage.getItem("bestResult");
+
+  if (Number(currentBestResult) < time) {
+    localStorage.setItem("bestResult", time);
+    currentBestResult = localStorage.getItem("bestResult");
+  }
+
+  return currentBestResult;
 }
 
 function saveClickTime() {
@@ -81,11 +92,23 @@ function clickProcessing() {
     finalBlockSelector.classList.remove("hide");
 
     const speedClickResult = getSpeedClick(TIME_LIST);
-    const speedClickResultHtml = `<div class="sub_text">Your speed: ${speedClickResult.toFixed(
-      2
-    )} click/s</div>`;
+    const bestResult = changeBestResult(speedClickResult);
+    const speedClickResultHtml = `
+    <div style="padding-bottom: 30px">You can better!</div>
+    <div class="sub_text">Result: ${speedClickResult} click/s</div>
+    `;
 
-    addElement(speedClickResultHtml, finalBlockSelector);
-    addElement(resetTestHtml, finalBlockSelector);
+    const newRecordHtml = `
+    <img src="img/done.png" alt="" />
+    <div style="padding-bottom: 30px">Сongratulations!</div>
+    <div class="sub_text">A new record: ${bestResult} click/s</div>
+    `;
+
+    if (bestResult <= speedClickResult) {
+      addElement(newRecordHtml, finalBlockSelector);
+    } else {
+      addElement(speedClickResultHtml, finalBlockSelector);
+    } 
+  addElement(resetTestHtml, finalBlockSelector);
   }
 }

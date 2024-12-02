@@ -1,3 +1,8 @@
+@font-face {
+	font-family: 'Lexend Deca'; 
+	src: url(/fonts/LexendDeca-Regular.ttf); 
+}
+
 html {
   height: 100%;
 }
@@ -6,7 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: #202940;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
   color: white;
   margin: 0px 5%;
   font-size: 60px;
@@ -35,20 +40,24 @@ footer {
 
 .logo_img {
   height: 18px;
+  
 }
 
 .logo {
-  font-size: 18px;
+  font-family: 'Lexend Deca', sans-serif;
+  font-size: 40px;
   font-weight: 500;
   padding-left: 5px;
 }
 
 .button {
+  font-family: 'Lexend Deca';
   color: white;
   border-radius: 50%;
   background-color: #202940;
   border-color: white;
-  border-width: 4px;
+  border-width: 3px;
+  cursor: pointer;
 }
 
 .start_button {
@@ -62,21 +71,25 @@ footer {
 }
 
 .speed_button {
+  font-size: 20px;
   height: 100px;
   width: 100px;
+  border-width: 2px;
+  font-size: 20px;
 }
 
-.speed_buttons:hover {
-  background-color: white;
+.speed_button:hover {
+  border-width: 3px;
+  border-color: #9922fb;
 }
 
 .sub_text {
-  font-size: 36px;
+  font-size: 26px;
 }
 
 .start_button:hover {
-  font-size: 100px;
-  border-width: 6px;
+  border-width: 4px;
+  border-color: #9922fb;
 }
 
 .hide {
@@ -96,6 +109,7 @@ a {
   text-decoration: none;
   font-size: 30px;
   color: #9922fb;
+  cursor: pointer;
 }
 
 a:hover {
