@@ -94,13 +94,13 @@ function clickProcessing() {
     const speedClickResult = getSpeedClick(TIME_LIST);
     const bestResult = changeBestResult(speedClickResult);
     const speedClickResultHtml = `
-    <div style="padding-bottom: 30px">You can better!</div>
+    <div>You can better!</div>
     <div class="sub_text">Result: ${speedClickResult} click/s</div>
     `;
 
     const newRecordHtml = `
     <img src="img/done.png" alt="" />
-    <div style="padding-bottom: 30px">Сongratulations!</div>
+    <div>Сongratulations!</div>
     <div class="sub_text">A new record: ${bestResult} click/s</div>
     `;
 
