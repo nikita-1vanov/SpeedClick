@@ -16,6 +16,19 @@ const absoluteBlockSelector = document.querySelector(".absolute");
 const startButtonSelector = document.querySelector(".start_button");
 const startTimeSelector = document.querySelector(".start_time");
 const timerBlockSelector = document.querySelector(".timer");
+const footerBlockSelector = document.querySelector("footer");
+
+const bestResult = localStorage.getItem("bestResult");
+const bestResultHtml = `<div class="best_result">Best result: ${bestResult}</div>`;
+const githubHtml = "<div>github</div>";
+
+if (bestResult) {
+  addElement(bestResultHtml, footerBlockSelector);
+  footerBlockSelector.style.display = "flex";
+  footerBlockSelector.style["justify-content"] = "space-between";
+}
+
+addElement(githubHtml, footerBlockSelector);
 
 function addElement(child, parrent) {
   const newElement = document.createElement("div");
@@ -108,7 +121,7 @@ function clickProcessing() {
       addElement(newRecordHtml, finalBlockSelector);
     } else {
       addElement(speedClickResultHtml, finalBlockSelector);
-    } 
-  addElement(resetTestHtml, finalBlockSelector);
+    }
+    addElement(resetTestHtml, finalBlockSelector);
   }
 }
