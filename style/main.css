@@ -1,0 +1,130 @@
+@font-face {
+  font-family: "Lexend Deca";
+  src: url(../fonts/LexendDeca-Regular.ttf);
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #202940;
+  font-family: "Lexend Deca", sans-serif;
+  color: white;
+  margin: 0px 5%;
+  font-size: 60px;
+  min-height: 100%;
+}
+
+header {
+  display: flex;
+  padding: 30px 0;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  font-size: 60px;
+  text-align: center;
+}
+
+footer {
+  margin: 30px 0;
+  font-size: 18px;
+  text-align: right;
+}
+
+.logo_img {
+  height: 18px;
+}
+
+.logo {
+  font-family: "Lexend Deca", sans-serif;
+  font-size: 40px;
+  font-weight: 500;
+  padding-left: 5px;
+}
+
+.button {
+  font-family: "Lexend Deca";
+  color: white;
+  border-radius: 50%;
+  background-color: #202940;
+  border-color: white;
+  border-width: 3px;
+  cursor: pointer;
+}
+
+.start_button {
+  height: 250px;
+  width: 250px;
+  font-size: 90px;
+}
+
+.start_time {
+  font-size: 110px;
+}
+
+.speed_button {
+  font-size: 20px;
+  height: 100px;
+  width: 100px;
+  border-width: 2px;
+  font-size: 20px;
+}
+
+.speed_button:hover {
+  border-width: 3px;
+  border-color: #9922fb;
+}
+
+.sub_text {
+  font-size: 32px;
+}
+
+.start_button:hover {
+  border-width: 4px;
+  border-color: #9922fb;
+}
+
+.hide {
+  display: none;
+}
+
+.absolute {
+  position: absolute;
+}
+
+footer {
+  font-size: 20px;
+  text-align: right;
+}
+
+main a {
+  text-decoration: none;
+  font-size: 30px;
+  color: #9922fb;
+  cursor: pointer;
+}
+
+main a:hover {
+  color: #6418d9;
+}
+
+footer a {
+  text-decoration: none;
+  color:white;
+  cursor: pointer;
+}
+
+footer a:hover {
+  color: #9922fb;
+}
+
+img {
+  max-width: 120px;
+}
