@@ -4,8 +4,10 @@ import { mainBlockSelector } from "./selector.js";
 
 const WINDOW_WIDTH = window.innerWidth;
 const WINDOW_HIGHT = window.innerHeight;
-const MAX_COUNT_CLICK = 4;
+const MAX_COUNT_CLICK = 10;
 const TIME_LIST = [];
+
+let countClick = 0;
 
 export function addElement(child, parrent) {
   parrent.innerHTML = child;
@@ -65,18 +67,22 @@ export function startGame() {
 
   setTimeout(() => {
     mainBlockSelector.firstElementChild.remove();
-    addElement(Template.SPEED_BUTTON_HTML, mainBlockSelector);
+    addElement(
+      Template.SPEED_BUTTON_HTML(MAX_COUNT_CLICK, countClick),
+      mainBlockSelector
+    );
   }, 3000);
 }
 
-let countClick = 1;
-
 function clickProcessing() {
   countClick++;
+  document.querySelector(".count_click").innerText = `
+    Click's: ${MAX_COUNT_CLICK - countClick}/${MAX_COUNT_CLICK}
+  `;
   setNewСoordinatesForSpeedButton();
   saveClickTime();
 
-  if (countClick > MAX_COUNT_CLICK) {
+  if (countClick === MAX_COUNT_CLICK) {
     const averageClickPerSecond = getAverageClickPerSecond(TIME_LIST);
     const bestResult = changeBestResultOnLocalStorage(averageClickPerSecond);
     const BEST_RESULT_BLOCK_HTML = Template.BEST_RESULT_BLOCK_HTML(bestResult);

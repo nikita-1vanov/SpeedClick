@@ -35,11 +35,16 @@ export const Template = {
   `;
   },
 
-  SPEED_BUTTON_HTML: `
+  SPEED_BUTTON_HTML: (allCountClick, currenCountClick) => {
+    return `
     <div class="absolute">
       <button class="button speed_button" onclick="clickProcessing()">Click</button>
     </div>
-  `,
+    <div class="count_click">
+      Click's: ${allCountClick - currenCountClick}/${allCountClick}
+    </div>
+  `;
+  },
 
   START_BUTTON_HTML: `
     <button class="button start_button" onclick=startGame()>GO</button>
