@@ -77,7 +77,7 @@ export function startGame() {
 function clickProcessing() {
   countClick++;
   document.querySelector(".count_click").innerText = `
-    Click's: ${MAX_COUNT_CLICK - countClick}/${MAX_COUNT_CLICK}
+    Click: ${MAX_COUNT_CLICK - countClick}/${MAX_COUNT_CLICK}
   `;
   setNewСoordinatesForSpeedButton();
   saveClickTime();
