@@ -41,7 +41,7 @@ export const Template = {
       <button class="button speed_button" onclick="clickProcessing()">Click</button>
     </div>
     <div class="count_click">
-      Click's: ${allCountClick - currenCountClick}/${allCountClick}
+      Click: ${allCountClick - currenCountClick}/${allCountClick}
     </div>
   `;
   },

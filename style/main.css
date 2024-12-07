@@ -102,7 +102,7 @@ main a:hover {
 }
 
 footer {
-  margin: 30px 0;
+  margin: 10px 0 30px 0;
   font-size: 20px;
   text-align: right;
 }
@@ -121,8 +121,10 @@ footer a:hover {
 }
 
 .count_click {
+  width: 100%;
   align-self: flex-end;
-  font-size: 26px;
+  text-align: left;
+  font-size: 20px;
 }
 
 button,
@@ -180,7 +182,6 @@ a {
   }
 
   .count_click {
-    font-size: 50px;
-    padding-bottom: 60px;
+    font-size: 40px;
   }
 }
