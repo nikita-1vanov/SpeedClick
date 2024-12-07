@@ -125,6 +125,11 @@ footer a:hover {
   font-size: 26px;
 }
 
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 @media screen and (max-device-width: 500px) {
   img {
     max-width: 300px;
