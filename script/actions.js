@@ -71,6 +71,11 @@ export function startGame() {
       Template.SPEED_BUTTON_HTML(MAX_COUNT_CLICK, countClick),
       mainBlockSelector
     );
+
+    const missClickHtmlBlock = document.createElement("script");
+    missClickHtmlBlock.setAttribute("type", "module");
+    missClickHtmlBlock.innerHTML = Template.SCRIPT_MISS_CLICK;
+    document.body.appendChild(missClickHtmlBlock);
   }, 3000);
 }
 
@@ -94,6 +99,24 @@ function clickProcessing() {
     } else {
       addElement(RESULT_BLOCK_HTML, mainBlockSelector);
     }
+  }
+}
+
+export function missProcessing(event, num) {
+  const button = document.querySelector("button");
+  if (!button.contains(event.target)) {
+    const missText = document.createElement("div");
+    missText.className = `miss-text-${num}`;
+    missText.innerText = "Miss";
+    missText.style.left = event.pageX + "px";
+    missText.style.top = event.pageY - 25 + "px";
+
+    setNewСoordinatesForSpeedButton();
+
+    document.body.appendChild(missText);
+    setTimeout(() => {
+      document.body.removeChild(missText);
+    }, 700);
   }
 }
 
