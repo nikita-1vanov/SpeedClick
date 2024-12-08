@@ -24,6 +24,7 @@ body {
   margin: 0px 5%;
   min-height: 100%;
   min-width: 600px;
+  cursor: default;
 }
 
 header {
@@ -127,6 +128,24 @@ footer a:hover {
   font-size: 20px;
 }
 
+[class^="miss"] {
+  position: absolute;
+  font-size: 20px;
+  -webkit-animation: smooth 1s;
+  -moz-animation: smooth 1s;
+  -o-animation: smooth 1s;
+  -ms-animation: smooth 1s;
+  animation: smooth 1s;
+}
+@-webkit-keyframes smooth {
+  0% {
+    opacity: 0.77;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;
@@ -183,5 +202,9 @@ a {
 
   .count_click {
     font-size: 40px;
+  }
+
+  [class^="miss"] {
+    font-size: 60px;
   }
 }

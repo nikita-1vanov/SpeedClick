@@ -35,6 +35,13 @@ export const Template = {
   `;
   },
 
+  SCRIPT_MISS_CLICK: ` 
+    import { missProcessing } from './script/actions.js';
+    let count = 1;
+    document.body.addEventListener("click", (event) => missProcessing(event));
+    count++
+  `,
+
   SPEED_BUTTON_HTML: (allCountClick, currenCountClick) => {
     return `
     <div class="absolute">
