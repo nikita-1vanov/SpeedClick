@@ -72,6 +72,7 @@ export function startGame() {
       mainBlockSelector
     );
 
+    setNewСoordinatesForSpeedButton()
     const missClickHtmlBlock = document.createElement("script");
     missClickHtmlBlock.setAttribute("type", "module");
     missClickHtmlBlock.innerHTML = Template.SCRIPT_MISS_CLICK;
