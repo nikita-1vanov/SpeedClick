@@ -25,6 +25,7 @@ body {
   min-height: 100%;
   min-width: 600px;
   cursor: default;
+  touch-action: manipulation;
 }
 
 header {
@@ -227,7 +228,13 @@ a {
     font-size: 60px;
   }
 
-  .trash {
-    display: none;
+
+  .best_result img {
+    height: 50px;
+    padding: 0 10px 0 10px;
+  }
+  
+  .tooltip {
+    font-size: 32px;
   }
 }
