@@ -1,6 +1,6 @@
 "use strict";
 import { Template } from "./template.js";
-import { addElement } from "./actions.js";
+import { addElement, deleteBestResult } from "./actions.js";
 import { footerBlockSelector, mainBlockSelector } from "./selector.js";
 
 const BEST_RESULT = localStorage.getItem("bestResult");
@@ -12,6 +12,7 @@ if (BEST_RESULT) {
   );
   footerBlockSelector.style.display = "flex";
   footerBlockSelector.style["justify-content"] = "space-between";
+  deleteBestResult();
 } else {
   addElement(Template.FOOTER_GITHUB_LINK_HTML, footerBlockSelector);
 }

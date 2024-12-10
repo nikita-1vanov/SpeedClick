@@ -111,10 +111,29 @@ footer {
 footer a {
   color: white;
   cursor: pointer;
+  text-align: right;
 }
 
 footer a:hover {
   color: #9922fb;
+}
+
+.best_result {
+  display: flex;
+}
+
+.best_result img {
+  height: 25px;
+  padding: 0 10px 0 10px;
+}
+
+.trash:hover {
+  opacity: 0.6;
+}
+
+.tooltip {
+  display: none;
+  font-size: 14px;
 }
 
 .absolute {
@@ -206,5 +225,9 @@ a {
 
   [class^="miss"] {
     font-size: 60px;
+  }
+
+  .trash {
+    display: none;
   }
 }
