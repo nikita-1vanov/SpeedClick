@@ -1,6 +1,6 @@
 "use strict";
 import { Template } from "./template.js";
-import { mainBlockSelector } from "./selector.js";
+import { footerBlockSelector, mainBlockSelector } from "./selector.js";
 
 const WINDOW_WIDTH = window.innerWidth;
 const WINDOW_HIGHT = window.innerHeight;
@@ -72,7 +72,13 @@ export function startGame() {
       mainBlockSelector
     );
 
-    setNewСoordinatesForSpeedButton()
+    if (document.querySelector(".best_result") === null) {
+      document.querySelector(".count_click").style["text-align"] = "right";
+    } else {
+      document.querySelector(".trash").style.display = "none";
+    }
+
+    setNewСoordinatesForSpeedButton();
     const missClickHtmlBlock = document.createElement("script");
     missClickHtmlBlock.setAttribute("type", "module");
     missClickHtmlBlock.innerHTML = Template.SCRIPT_MISS_CLICK;
@@ -81,6 +87,9 @@ export function startGame() {
 }
 
 function clickProcessing() {
+  if (document.querySelector(".best_result") !== null) {
+    document.querySelector(".trash").style.display = "display";
+  }
   countClick++;
   document.querySelector(".count_click").innerText = `
     Click: ${MAX_COUNT_CLICK - countClick}/${MAX_COUNT_CLICK}
@@ -89,6 +98,9 @@ function clickProcessing() {
   saveClickTime();
 
   if (countClick === MAX_COUNT_CLICK) {
+    if (document.querySelector(".best_result") !== null) {
+      document.querySelector(".trash").style.display = "block";
+    }
     const averageClickPerSecond = getAverageClickPerSecond(TIME_LIST);
     const bestResult = changeBestResultOnLocalStorage(averageClickPerSecond);
     const BEST_RESULT_BLOCK_HTML = Template.BEST_RESULT_BLOCK_HTML(bestResult);
@@ -119,6 +131,25 @@ export function missProcessing(event, num) {
       document.body.removeChild(missText);
     }, 700);
   }
+}
+
+export function deleteBestResult() {
+  const button = document.querySelector(".trash");
+  const tooltip = document.querySelector(".tooltip");
+
+  button.addEventListener("mouseenter", (event) => {
+    tooltip.style.display = "block";
+  });
+
+  button.addEventListener("mouseleave", () => {
+    tooltip.style.display = "none";
+  });
+
+  button.addEventListener("dblclick", () => {
+    document.querySelector(".best_result").remove();
+    footerBlockSelector.style["justify-content"] = "right";
+    localStorage.removeItem("bestResult");
+  });
 }
 
 window.clickProcessing = clickProcessing;

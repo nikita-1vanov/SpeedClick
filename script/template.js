@@ -19,7 +19,12 @@ export const Template = {
   `,
 
   FOOTER_WITH_BEST_RESULT_HTML: (result) => {
-    return `<div>Best result: ${result}</div>${Template.FOOTER_GITHUB_LINK_HTML}`;
+    return `
+    <div class="best_result">
+      <div>Best result: ${result}</div><img class="trash" src="./img/basket.png"></img>
+      <div class="tooltip">Double click to delete</div>
+    </div>
+    ${Template.FOOTER_GITHUB_LINK_HTML}`;
   },
 
   RESET_LINK_HTML: '<a onclick="location.reload()">Run again</a>',
