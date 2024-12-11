@@ -141,7 +141,7 @@ footer a:hover {
   position: absolute;
 }
 
-.count_click {
+.count_clicks {
   width: 100%;
   align-self: flex-end;
   text-align: left;
@@ -220,7 +220,7 @@ a {
     font-size: 140px;
   }
 
-  .count_click {
+  .count_clicks {
     font-size: 40px;
   }
 

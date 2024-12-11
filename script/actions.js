@@ -1,156 +1,125 @@
 "use strict";
-import { Template } from "./template.js";
-import { footerBlockSelector, mainBlockSelector } from "./selector.js";
+import { Template } from "./elem/templates.js";
+import { app } from "./app.js";
 
-const WINDOW_WIDTH = window.innerWidth;
-const WINDOW_HIGHT = window.innerHeight;
-const MAX_COUNT_CLICK = 10;
-const TIME_LIST = [];
+const MAX_COUNT_CLICK = 2;
 
 let countClick = 0;
 
-export function addElement(child, parrent) {
-  parrent.innerHTML = child;
-}
+// export function addElement(child, parrent) {
+//   parrent.innerHTML = child;
+// }
 
-function changeBestResultOnLocalStorage(time) {
-  let currentBestResult = localStorage.getItem("bestResult");
+// //=================ПОДУМАТЬ//================//================
 
-  if (Number(currentBestResult) < time) {
-    localStorage.setItem("bestResult", time);
-    currentBestResult = localStorage.getItem("bestResult");
-  }
+// function changeBestResultOnLocalStorage(time) {
+//   let currentBestResult =
+//     app.bestResultLocalStorage.getValue();
 
-  return currentBestResult;
-}
-
-function getAverageClickPerSecond(times) {
-  const lastItemIndex = TIME_LIST.length - 1;
-  let sum = 0;
-
-  for (let i = lastItemIndex; i > 0; i--) {
-    const res = times[i] - times[i - 1];
-    sum += res;
-  }
-
-  return (1000 / (sum / times.length)).toFixed(2);
-}
-
-function getRandomNumber(limit) {
-  return `${Math.abs(Math.floor(Math.random() * limit) + 1 - 350)}px`;
-}
-
-function saveClickTime() {
-  const time = new Date().getTime();
-  TIME_LIST.push(time);
-}
-
-function setNewСoordinatesForSpeedButton() {
-  document.querySelector(".absolute").style.top = getRandomNumber(WINDOW_HIGHT);
-  document.querySelector(".absolute").style.left =
-    getRandomNumber(WINDOW_WIDTH);
-}
+//   if (Number(currentBestResult) > time) {
+//     return currentBestResult;
+//   } else {
+//     return app.bestResultLocalStorage.setValue(time);
+//   }
+// }
+// //================//================//================//================
 
 export function startGame() {
-  mainBlockSelector.firstElementChild.remove();
-  addElement(Template.TIMER_BLOCK_HTML, mainBlockSelector);
-
-  const startTimeSelector = document.querySelector(".start_time");
+  app.selectors.mainBlockSelector.addElement(app.template.TIMER_BLOCK_HTML);
 
   setTimeout(() => {
-    startTimeSelector.innerText = 2;
+    app.selectors.startTimeSelector.setText(2);
   }, 1000);
 
   setTimeout(() => {
-    startTimeSelector.innerText = 1;
+    app.selectors.startTimeSelector.setText(1);
   }, 2000);
 
   setTimeout(() => {
-    mainBlockSelector.firstElementChild.remove();
-    addElement(
-      Template.SPEED_BUTTON_HTML(MAX_COUNT_CLICK, countClick),
-      mainBlockSelector
+    app.selectors.mainBlockSelector.addElement(
+      app.template.SPEED_BUTTON_HTML(MAX_COUNT_CLICK, countClick)
     );
 
-    if (document.querySelector(".best_result") === null) {
-      document.querySelector(".count_click").style["text-align"] = "right";
+    if (app.selectors.bestResultSelector === null) {
+      app.selectors.countClicks.style["text-align"] = "right";
     } else {
       document.querySelector(".trash").style.display = "none";
     }
 
-    setNewСoordinatesForSpeedButton();
+    app.coordinates.setNewСoordinatesForSpeedButton();
     const missClickHtmlBlock = document.createElement("script");
     missClickHtmlBlock.setAttribute("type", "module");
-    missClickHtmlBlock.innerHTML = Template.SCRIPT_MISS_CLICK;
+    missClickHtmlBlock.innerHTML = app.template.SCRIPT_MISS_CLICK;
     document.body.appendChild(missClickHtmlBlock);
   }, 3000);
 }
 
-function clickProcessing() {
-  if (document.querySelector(".best_result") !== null) {
-    document.querySelector(".trash").style.display = "display";
-  }
-  countClick++;
-  document.querySelector(".count_click").innerText = `
-    Click: ${MAX_COUNT_CLICK - countClick}/${MAX_COUNT_CLICK}
-  `;
-  setNewСoordinatesForSpeedButton();
-  saveClickTime();
+// function clickProcessing() {
+//   if (app.selectors.bestResultSelector !== null) {
+//     document.querySelector(".trash").style.display = "display";
+//   }
+//   countClick++;
 
-  if (countClick === MAX_COUNT_CLICK) {
-    if (document.querySelector(".best_result") !== null) {
-      document.querySelector(".trash").style.display = "block";
-    }
-    const averageClickPerSecond = getAverageClickPerSecond(TIME_LIST);
-    const bestResult = changeBestResultOnLocalStorage(averageClickPerSecond);
-    const BEST_RESULT_BLOCK_HTML = Template.BEST_RESULT_BLOCK_HTML(bestResult);
-    const RESULT_BLOCK_HTML = Template.RESULT_BLOCK_HTML(averageClickPerSecond);
-    mainBlockSelector.firstElementChild.remove();
+//   app.selectors.countClicks.innerText = `
+//     Click: ${MAX_COUNT_CLICK - countClick}/${MAX_COUNT_CLICK}
+//   `;
+//   app.coordinates.setNewСoordinatesForSpeedButton();
+//   app.timer.saveClickTime();
 
-    if (bestResult <= averageClickPerSecond) {
-      addElement(BEST_RESULT_BLOCK_HTML, mainBlockSelector);
-    } else {
-      addElement(RESULT_BLOCK_HTML, mainBlockSelector);
-    }
-  }
-}
+//   if (countClick === MAX_COUNT_CLICK) {
+//     if (app.selectors.bestResultSelector !== null) {
+//       document.querySelector(".trash").style.display = "block";
+//     }
+//     const averageClickPerSecond = app.timer.getAverageClickPerSecond();
+//     const bestResult = changeBestResultOnLocalStorage(averageClickPerSecond);
+//     const BEST_RESULT_BLOCK_HTML = app.template.BEST_RESULT_BLOCK_HTML(bestResult);
+//     const RESULT_BLOCK_HTML = app.template.RESULT_BLOCK_HTML(averageClickPerSecond);
+//     app.selectors.mainBlockSelector.firstElementChild.remove();
 
-export function missProcessing(event, num) {
-  const button = document.querySelector("button");
-  if (!button.contains(event.target)) {
-    const missText = document.createElement("div");
-    missText.className = `miss-text-${num}`;
-    missText.innerText = "Miss";
-    missText.style.left = event.pageX + "px";
-    missText.style.top = event.pageY - 25 + "px";
+//     if (bestResult <= averageClickPerSecond) {
+//       addElement(BEST_RESULT_BLOCK_HTML, app.selectors.mainBlockSelector);
+//     } else {
+//       addElement(RESULT_BLOCK_HTML, app.selectors.mainBlockSelector);
+//     }
+//   }
+// }
 
-    setNewСoordinatesForSpeedButton();
+// export function missProcessing(event, num) {
+//   const button = document.querySelector("button");
+//   if (!button.contains(event.target)) {
+//     const missText = document.createElement("div");
+//     missText.className = `miss-text-${num}`;
+//     missText.innerText = "Miss";
+//     missText.style.left = event.pageX + "px";
+//     missText.style.top = event.pageY - 25 + "px";
 
-    document.body.appendChild(missText);
-    setTimeout(() => {
-      document.body.removeChild(missText);
-    }, 700);
-  }
-}
+//     app.coordinates.setNewСoordinatesForSpeedButton();
 
-export function deleteBestResult() {
-  const button = document.querySelector(".trash");
-  const tooltip = document.querySelector(".tooltip");
+//     document.body.appendChild(missText);
+//     setTimeout(() => {
+//       document.body.removeChild(missText);
+//     }, 700);
+//   }
+// }
 
-  button.addEventListener("mouseenter", (event) => {
-    tooltip.style.display = "block";
-  });
+// export function deleteBestResult() {
+//   const button = document.querySelector(".trash");
+//   const tooltip = document.querySelector(".tooltip");
 
-  button.addEventListener("mouseleave", () => {
-    tooltip.style.display = "none";
-  });
+//   button.addEventListener("mouseenter", (event) => {
+//     tooltip.style.display = "block";
+//   });
 
-  button.addEventListener("dblclick", () => {
-    document.querySelector(".best_result").remove();
-    footerBlockSelector.style["justify-content"] = "right";
-    localStorage.removeItem("bestResult");
-  });
-}
+//   button.addEventListener("mouseleave", () => {
+//     tooltip.style.display = "none";
+//   });
 
-window.clickProcessing = clickProcessing;
+//   button.addEventListener("dblclick", () => {
+//     app.selectors.bestResultSelector.remove();
+//     app.selectors.footerBlockSelector.style["justify-content"] = "right";
+//     localStorage.removeItem("bestResult");
+//   });
+// }
+
+// window.clickProcessing = clickProcessing;
 window.startGame = startGame;

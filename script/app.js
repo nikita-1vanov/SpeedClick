@@ -1,21 +1,37 @@
 "use strict";
-import { Template } from "./template.js";
-import { addElement, deleteBestResult } from "./actions.js";
-import { footerBlockSelector, mainBlockSelector } from "./selector.js";
+import { CoordinatesService } from "./services/coordinates.js";
+import { Selectors } from "./elem/selectors.js";
+// import { addElement, deleteBestResult } from "./actions.js";
+import { LocalStorageService } from "./services/storage.js";
+import { TimerService } from "./services/timer.js";
+import { Template } from "./elem/templates.js";
 
-const BEST_RESULT = localStorage.getItem("bestResult");
-
-if (BEST_RESULT) {
-  addElement(
-    Template.FOOTER_WITH_BEST_RESULT_HTML(BEST_RESULT),
-    footerBlockSelector
-  );
-  footerBlockSelector.style.display = "flex";
-  footerBlockSelector.style["justify-content"] = "space-between";
-  deleteBestResult();
-} else {
-  addElement(Template.FOOTER_GITHUB_LINK_HTML, footerBlockSelector);
+class App {
+  bestResultLocalStorage = new LocalStorageService("bestResult");
+  coordinates = new CoordinatesService();
+  selectors = new Selectors();
+  timer = new TimerService();
+  template = new Template();
 }
 
-mainBlockSelector.firstElementChild.remove();
-addElement(Template.START_BUTTON_HTML, mainBlockSelector);
+export const app = new App();
+
+const BEST_RESULT = app.bestResultLocalStorage.getValue();
+
+if (BEST_RESULT) {
+  app.selectors.footerBlockSelector.addElement(
+    app.template.FOOTER_WITH_BEST_RESULT_HTML(BEST_RESULT)
+  );
+
+  app.selectors.footerBlockSelector.setStyle("display", "flex");
+  app.selectors.footerBlockSelector.setStyle(
+    "justify-content",
+    "space-between"
+  );
+
+  // deleteBestResult();
+} else {
+  app.selectors.footerBlockSelector.addElement(app.template.FOOTER_GITHUB_LINK_HTML);
+}
+
+app.selectors.mainBlockSelector.addElement(app.template.START_BUTTON_HTML);
