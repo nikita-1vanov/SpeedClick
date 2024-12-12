@@ -1,5 +1,5 @@
 "use strict";
-import { app } from "../app.js";
+import { app } from "./app.js";
 import { Selectors } from "../elem/selectors.js";
 
 export class CoordinatesService {
@@ -12,12 +12,14 @@ export class CoordinatesService {
   }
 
   setNewСoordinatesForSpeedButton() {
-    app.selectors.absoluteSelector.style.top = this.getRandomCoordinate(
-      this.WINDOW_HIGHT
+    app.selectors.absoluteSelector.setStyle(
+      "top",
+      this.getRandomCoordinate(this.WINDOW_HIGHT)
     );
 
-    app.selectors.absoluteSelector.style.left = this.getRandomCoordinate(
-      this.WINDOW_WIDTH
+    app.selectors.absoluteSelector.setStyle(
+      "left",
+      this.getRandomCoordinate(this.WINDOW_WIDTH)
     );
   }
 }

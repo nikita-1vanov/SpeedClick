@@ -62,9 +62,8 @@ export class Template {
 
   get SCRIPT_MISS_CLICK() {
     return ` 
-    import { missProcessing } from './script/actions.js';
     let count = 1;
-    document.body.addEventListener("click", (event) => missProcessing(event));
+    document.body.addEventListener("click", (event) => missProcessing(event, count));
     count++
   `;
   }

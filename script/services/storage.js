@@ -1,8 +1,5 @@
 "use strict";
-
 export class LocalStorageService {
-  key = "";
-
   constructor(key) {
     this.key = key;
   }

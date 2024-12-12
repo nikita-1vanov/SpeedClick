@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 import { WebElement } from "./elements.js";
 
 export class Selectors {
@@ -10,12 +10,16 @@ export class Selectors {
     return new WebElement(document.querySelector(".best_result"));
   }
 
+  get bodySelector() {
+    return new WebElement(document.querySelector("body"));
+  }
+
   get countClicks() {
     return new WebElement(document.querySelector(".count_clicks"));
   }
 
-  get startTimeSelector() {
-    return new WebElement(document.querySelector(".start_time"));
+  create(elem) {
+    return new WebElement(document.createElement(elem));
   }
 
   get footerBlockSelector() {
@@ -24,5 +28,17 @@ export class Selectors {
 
   get mainBlockSelector() {
     return new WebElement(document.querySelector("main"));
+  }
+
+  get startTimeSelector() {
+    return new WebElement(document.querySelector(".start_time"));
+  }
+
+  get tooltipSelector() {
+    return new WebElement(document.querySelector(".tooltip"));
+  }
+
+  get trashImageSelector() {
+    return new WebElement(document.querySelector(".trash"));
   }
 }
