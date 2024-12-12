@@ -141,14 +141,14 @@ footer a:hover {
   position: absolute;
 }
 
-.count_click {
+.count_clicks {
   width: 100%;
   align-self: flex-end;
   text-align: left;
   font-size: 20px;
 }
 
-[class^="miss"] {
+.miss-text {
   position: absolute;
   font-size: 20px;
   -webkit-animation: smooth 1s;
@@ -220,11 +220,11 @@ a {
     font-size: 140px;
   }
 
-  .count_click {
+  .count_clicks {
     font-size: 40px;
   }
 
-  [class^="miss"] {
+  miss-text {
     font-size: 60px;
   }
 
