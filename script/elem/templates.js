@@ -8,7 +8,7 @@ export class Template {
       <div>
         Сongratulations!
       </div>
-      <div class="sub_text">
+      <div class="main__sub-text">
         A new record: ${speed} click/s
       </div>
       ${this.RESET_LINK_HTML}
@@ -18,7 +18,7 @@ export class Template {
 
   get FOOTER_GITHUB_LINK_HTML() {
     return `
-      <a href='https://github.com/nikita-1vanov/SpeedClick'>
+      <a class="footer__gitlab_link"href='https://github.com/nikita-1vanov/SpeedClick'>
         github
       </a>
     `;
@@ -26,12 +26,12 @@ export class Template {
 
   FOOTER_WITH_BEST_RESULT_HTML(result) {
     return `
-    <div class="best_result">
+    <div class="footer__best-result-block">
       <div>
         Best result: ${result}
       </div>
-      <img class="trash" src="./img/basket.png"></img>
-      <div class="tooltip">
+      <img class="footer__best-result-img" src="./img/basket.png"></img>
+      <div class="footer__best-result-tooltip">
         Double click to delete
       </div>
     </div>
@@ -40,7 +40,7 @@ export class Template {
 
   get RESET_LINK_HTML() {
     return `
-      <a onclick="location.reload()">
+      <a class="main__reset-link" onclick="location.reload()">
         Run again
       </a>`;
   }
@@ -52,7 +52,7 @@ export class Template {
       <div>
         You can better!
       </div>
-      <div class="sub_text">
+      <div class="main__sub-text">
         Result: ${speed} click/s
       </div>
       ${this.RESET_LINK_HTML}
@@ -70,12 +70,12 @@ export class Template {
 
   SPEED_BUTTON_HTML(allCountClick, currenCountClick) {
     return `
-    <div class="absolute">
-      <button class="button speed_button" onclick="clickProcessing()">
+    <div class="main__speed-button-block">
+      <button class="main__speed-button" onclick="clickProcessing()">
         Click
       </button>
     </div>
-    <div class="count_clicks">
+    <div class="main__count-clicks">
       Click: ${allCountClick - currenCountClick}/${allCountClick}
     </div>
   `;
@@ -83,7 +83,7 @@ export class Template {
 
   get START_BUTTON_HTML() {
     return `
-    <button class="button start_button" onclick=startGame()>
+    <button class="main__start-button" onclick=startGame()>
       GO
     </button>
   `;
@@ -91,11 +91,11 @@ export class Template {
 
   get TIMER_BLOCK_HTML() {
     return `
-    <div class="timer">
-      <div class="start_time">
+    <div>
+      <div class="main__timer">
         3
       </div>
-      <div class="sub_text">
+      <div class="main__sub-text">
         Click on circle!
       </div>
     </div>

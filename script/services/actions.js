@@ -38,7 +38,7 @@ export class ActionService {
   addMissClickText(event) {
     const missTextElement = app.selectors.create("div");
     return missTextElement
-      .setClass(`miss-text`)
+      .setClass("main__miss-text")
       .setText("Miss")
       .setStyle("left", `${event.pageX}px`)
       .setStyle("top", `${event.pageY - 25}px`);
@@ -89,7 +89,7 @@ export class ActionService {
 
   changeTimer(value, delay) {
     setTimeout(() => {
-      app.selectors.startTimeSelector.setText(value);
+      app.selectors.timerSelector.setText(value);
     }, delay);
   }
 

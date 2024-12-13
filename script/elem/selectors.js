@@ -2,12 +2,12 @@
 import { WebElement } from "./elements.js";
 
 export class Selectors {
-  get absoluteSelector() {
-    return new WebElement(document.querySelector(".absolute"));
+  get speedButtonBlockSelector() {
+    return new WebElement(document.querySelector(".main__speed-button-block"));
   }
 
   get bestResultSelector() {
-    return new WebElement(document.querySelector(".best_result"));
+    return new WebElement(document.querySelector(".footer__best-result-block"));
   }
 
   get bodySelector() {
@@ -15,7 +15,7 @@ export class Selectors {
   }
 
   get countClicks() {
-    return new WebElement(document.querySelector(".count_clicks"));
+    return new WebElement(document.querySelector(".main__count-clicks"));
   }
 
   create(elem) {
@@ -30,15 +30,17 @@ export class Selectors {
     return new WebElement(document.querySelector("main"));
   }
 
-  get startTimeSelector() {
-    return new WebElement(document.querySelector(".start_time"));
+  get timerSelector() {
+    return new WebElement(document.querySelector(".main__timer"));
   }
 
   get tooltipSelector() {
-    return new WebElement(document.querySelector(".tooltip"));
+    return new WebElement(
+      document.querySelector(".footer__best-result-tooltip")
+    );
   }
 
   get trashImageSelector() {
-    return new WebElement(document.querySelector(".trash"));
+    return new WebElement(document.querySelector(".footer__best-result-img"));
   }
 }
