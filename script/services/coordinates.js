@@ -12,12 +12,12 @@ export class CoordinatesService {
   }
 
   setNewСoordinatesForSpeedButton() {
-    app.selectors.absoluteSelector.setStyle(
+    app.selectors.speedButtonBlockSelector.setStyle(
       "top",
       this.getRandomCoordinate(this.WINDOW_HIGHT)
     );
 
-    app.selectors.absoluteSelector.setStyle(
+    app.selectors.speedButtonBlockSelector.setStyle(
       "left",
       this.getRandomCoordinate(this.WINDOW_WIDTH)
     );

@@ -5,14 +5,18 @@
 
 a {
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-img {
-  max-width: 120px;
-}
-
-html {
-  height: 100%;
+button {
+  font-family: "Lexend Deca";
+  color: white;
+  border-radius: 50%;
+  background-color: #202940;
+  border-color: white;
+  border-width: 3px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -28,55 +32,28 @@ body {
   touch-action: manipulation;
 }
 
+img {
+  max-width: 120px;
+}
+
+html {
+  height: 100%;
+}
+
 header {
   display: flex;
   padding: 30px 0;
 }
 
-.logo_img {
+.header__logo-img {
   height: 18px;
 }
 
-.logo {
+.header__logo-text {
   font-family: "Lexend Deca", sans-serif;
   font-size: 40px;
   font-weight: 500;
   padding-left: 5px;
-}
-
-.button {
-  font-family: "Lexend Deca";
-  color: white;
-  border-radius: 50%;
-  background-color: #202940;
-  border-color: white;
-  border-width: 3px;
-  cursor: pointer;
-}
-
-.start_button {
-  height: 250px;
-  width: 250px;
-  font-size: 90px;
-}
-
-.start_button:hover {
-  border-color: #9922fb;
-}
-
-.start_time {
-  font-size: 110px;
-}
-
-.speed_button {
-  font-size: 20px;
-  height: 100px;
-  width: 100px;
-  border-width: 2px;
-}
-
-.speed_button:hover {
-  border-color: #9922fb;
 }
 
 main {
@@ -88,67 +65,14 @@ main {
   font-size: 60px;
 }
 
-main a {
-  font-size: 30px;
-  color: #9922fb;
-  cursor: pointer;
-}
-
-main a:hover {
-  color: #6418d9;
-}
-
-.sub_text {
-  font-size: 32px;
-  padding: 10px 0 10px 0;
-}
-
-footer {
-  margin: 10px 0 30px 0;
-  font-size: 20px;
-  text-align: right;
-}
-
-footer a {
-  color: white;
-  cursor: pointer;
-  text-align: right;
-}
-
-footer a:hover {
-  color: #9922fb;
-}
-
-.best_result {
-  display: flex;
-}
-
-.best_result img {
-  height: 25px;
-  padding: 0 10px 0 10px;
-}
-
-.trash:hover {
-  opacity: 0.6;
-}
-
-.tooltip {
-  display: none;
-  font-size: 14px;
-}
-
-.absolute {
-  position: absolute;
-}
-
-.count_clicks {
+.main__count-clicks {
   width: 100%;
   align-self: flex-end;
   text-align: left;
   font-size: 20px;
 }
 
-.miss-text {
+.main__miss-text {
   position: absolute;
   font-size: 20px;
   -webkit-animation: smooth 1s;
@@ -166,9 +90,82 @@ footer a:hover {
   }
 }
 
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
+.main__reset-link {
+  font-size: 30px;
+  color: #9922fb;
+  cursor: pointer;
+}
+
+.main__reset-link:hover {
+  color: #6418d9;
+}
+
+.main__speed-button {
+  font-size: 20px;
+  height: 100px;
+  width: 100px;
+  border-width: 2px;
+}
+
+.main__speed-button:hover {
+  border-color: #9922fb;
+}
+
+.main__speed-button-block {
+  position: absolute;
+}
+
+.main__start-button {
+  height: 250px;
+  width: 250px;
+  font-size: 90px;
+}
+
+.main__start-button:hover {
+  border-color: #9922fb;
+}
+
+.main__sub-text {
+  font-size: 32px;
+  padding: 10px 0 10px 0;
+}
+
+.main__timer {
+  font-size: 110px;
+}
+
+footer {
+  margin: 10px 0 30px 0;
+  font-size: 20px;
+  text-align: right;
+}
+
+.footer__best-result-block {
+  display: flex;
+}
+
+.footer__best-result-img {
+  height: 25px;
+  padding: 0 10px 0 10px;
+}
+
+.footer__best-result-img:hover {
+  opacity: 0.6;
+}
+
+.footer__best-result-tooltip {
+  display: none;
+  font-size: 14px;
+}
+
+.footer__gitlab_link {
+  color: white;
+  cursor: pointer;
+  text-align: right;
+}
+
+.footer__gitlab_link:hover {
+  color: #9922fb;
 }
 
 @media screen and (max-device-width: 500px) {
@@ -176,12 +173,12 @@ a {
     max-width: 300px;
   }
 
-  .logo {
+  .header__logo-text {
     text-align: center;
     font-size: 80px;
   }
 
-  .logo_img {
+  .header__logo-img {
     height: 40px;
   }
 
@@ -189,13 +186,38 @@ a {
     font-size: 90px;
   }
 
-  .sub_text {
-    font-size: 48px;
-    padding: 30px 0 90px 0;
+  .main__count-clicks {
+    font-size: 40px;
   }
 
-  main a {
+  .main__miss-text {
+    font-size: 60px;
+  }
+
+  .main__reset-link {
     font-size: 65px;
+  }
+
+  .main__speed-button {
+    font-size: 40px;
+    height: 200px;
+    width: 200px;
+    border-width: 2px;
+  }
+
+  .main__start-button {
+    height: 400px;
+    width: 400px;
+    font-size: 140px;
+  }
+
+  .main__timer {
+    font-size: 140px;
+  }
+
+  .main__sub-text {
+    font-size: 48px;
+    padding: 30px 0 90px 0;
   }
 
   footer {
@@ -203,38 +225,12 @@ a {
     text-align: right;
   }
 
-  .speed_button {
-    font-size: 40px;
-    height: 200px;
-    width: 200px;
-    border-width: 2px;
-  }
-
-  .start_button {
-    height: 400px;
-    width: 400px;
-    font-size: 140px;
-  }
-
-  .start_time {
-    font-size: 140px;
-  }
-
-  .count_clicks {
-    font-size: 40px;
-  }
-
-  miss-text {
-    font-size: 60px;
-  }
-
-
-  .best_result img {
+  .footer__best-result-img {
     height: 50px;
     padding: 0 10px 0 10px;
   }
-  
-  .tooltip {
+
+  .footer__best-result-tooltip {
     font-size: 32px;
   }
 }
