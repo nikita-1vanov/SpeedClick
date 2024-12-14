@@ -1,12 +1,16 @@
-<div id="header" align="center">
-  <img src="https://media.giphy.com/media/BOOyywoZerTGp90YPN/giphy.gif?cid=ecf05e4719glbehr2gkmn543cmyy27oht6nopeo408tn3tfa&ep=v1_gifs_related&rid=giphy.gif&ct=s" width="100"/>
-  <h1>SpeedClick - measure the reaction rate</h1>
-</div>
-<div>
-<h3>About</h3>
-<img src="https://vault.pictures/p/b9d5d4d741024c56a5e79cf2215ad10e" width="400px">
-</div>
+[![](img/screen.jpg)](https://nikita-1vanov.github.io/SpeedClick/)
+<br />
 
-A single-player game for developing reaction speed. You need to press all the buttons on the screen as soon as possible. The buttons will appear sequentially one after the other. Set personal records and compete with your friends.
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23007ACC.svg?style=for-the-badge&logo=javascript&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-ffca28?style=for-the-badge&logo=css3&logoColor=black)
 
-<a href="https://nikita-1vanov.github.io/SpeedClick/">Go to game</a>
+# About
+
+SpeedClick - minimalistic and customizable click rate test. In the settings you can specify the number of clicks and button size. The test also takes into account the percentage of button hits. It is possible to save and delete the best result. The screen displays the progress: the total number of clicks and the remaining number of clicks. With this test you can practice mouse control, which can help in computer games.
+
+# Features (in progress)
+
+- setting the number of clicks and the size of the button
+- counting the number of  miss clicks
+- new game modes
