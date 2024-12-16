@@ -2,9 +2,9 @@
 import { app } from "./app.js";
 
 export class ActionService {
-  addBestResultPage(result) {
+  addBestResultPage(result, missClickPercent) {
     app.selectors.mainBlockSelector.addElement(
-      app.template.BEST_RESULT_BLOCK_HTML(result)
+      app.template.BEST_RESULT_BLOCK_HTML(result, missClickPercent)
     );
   }
 
@@ -44,9 +44,9 @@ export class ActionService {
       .setStyle("top", `${event.pageY - 25}px`);
   }
 
-  addResultPage(result) {
+  addResultPage(result, missClickPercent) {
     app.selectors.mainBlockSelector.addElement(
-      app.template.RESULT_BLOCK_HTML(result)
+      app.template.RESULT_BLOCK_HTML(result, missClickPercent)
     );
   }
 
@@ -107,6 +107,15 @@ export class ActionService {
       app.selectors.bestResultSelector.delete();
       app.selectors.footerBlockSelector.setStyle("justify-content", "right");
     });
+  }
+
+  getMissClickPercent(totalClick, clickToButton) {
+    const result = 100 - (clickToButton / totalClick) * 100;
+    if (Number.isInteger(result)) {
+      return result;
+    } else {
+      return result.toFixed(2);
+    }
   }
 
   hideTrashImage() {

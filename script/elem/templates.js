@@ -1,7 +1,16 @@
 "use strict";
+import { TOTAL_COUNT_CLICK, COUNT_CLICK } from "../main.js";
 
 export class Template {
-  BEST_RESULT_BLOCK_HTML(speed) {
+  ACCUARACY_RESULT_HTML(result) {
+    return `
+    <div class="main__sub-text">
+      Miss click: ${TOTAL_COUNT_CLICK - COUNT_CLICK} (${result}%)
+    </div>
+    `;
+  }
+
+  BEST_RESULT_BLOCK_HTML(speed, missClickPercent) {
     return `
     <div class="final">
       <img src="img/done.png" alt="" />
@@ -11,6 +20,7 @@ export class Template {
       <div class="main__sub-text">
         A new record: ${speed} click/s
       </div>
+      ${this.ACCUARACY_RESULT_HTML(missClickPercent)}
       ${this.RESET_LINK_HTML}
     </div>
   `;
@@ -45,7 +55,7 @@ export class Template {
       </a>`;
   }
 
-  RESULT_BLOCK_HTML(speed) {
+  RESULT_BLOCK_HTML(speed, missClickPercent) {
     return `
     <div class="final">
       <img src="img/sad.png" alt="" />
@@ -53,8 +63,9 @@ export class Template {
         You can better!
       </div>
       <div class="main__sub-text">
-        Result: ${speed} click/s
+        Speed: ${speed} click/s
       </div>
+      ${this.ACCUARACY_RESULT_HTML(missClickPercent)}
       ${this.RESET_LINK_HTML}
     </div>
   `;
