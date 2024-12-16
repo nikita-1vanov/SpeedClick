@@ -2,8 +2,9 @@
 import { app } from "./services/app.js";
 
 let BEST_RESULT = app.bestResultLocalStorage.getValue();
-let COUNT_CLICK = 0;
-let MAX_COUNT_CLICK = 10;
+let MAX_COUNT_CLICK = 5;
+export let COUNT_CLICK = 0;
+export let TOTAL_COUNT_CLICK = 0;
 
 app.actions.addStartButton();
 
@@ -26,6 +27,7 @@ export function startGame() {
 function missProcessing(event) {
   const button = document.querySelector("button");
   if (!button.contains(event.target)) {
+    TOTAL_COUNT_CLICK++;
     const missTextElement = app.actions.addMissClickText(event);
     app.coordinates.setNewСoordinatesForSpeedButton();
 
@@ -38,6 +40,7 @@ function missProcessing(event) {
 
 function clickProcessing() {
   COUNT_CLICK++;
+  TOTAL_COUNT_CLICK++;
   app.actions.hideTrashImage();
   app.actions.changeClickCounter(MAX_COUNT_CLICK, COUNT_CLICK);
 
@@ -45,16 +48,19 @@ function clickProcessing() {
   app.timer.saveClickTime();
 
   if (COUNT_CLICK === MAX_COUNT_CLICK) {
+    const missClickPercent = app.actions.getMissClickPercent(
+      TOTAL_COUNT_CLICK,
+      COUNT_CLICK
+    );
     const averageClickPerSecond = app.timer.getAverageClickPerSecond();
-    console.log();
     BEST_RESULT = app.actions.changeBestResultOnLocalStorage(
       averageClickPerSecond
     );
 
     if (BEST_RESULT <= averageClickPerSecond) {
-      app.actions.addBestResultPage(BEST_RESULT);
+      app.actions.addBestResultPage(BEST_RESULT, missClickPercent);
     } else {
-      app.actions.addResultPage(averageClickPerSecond);
+      app.actions.addResultPage(averageClickPerSecond, missClickPercent);
     }
     app.selectors.trashImageSelector.setStyle("display", "block");
   }
