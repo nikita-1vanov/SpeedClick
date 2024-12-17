@@ -72,6 +72,18 @@ main {
   font-size: 20px;
 }
 
+.main__error {
+  animation: hideblock 2s;
+}
+@keyframes hideblock {
+  0%, 99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .main__miss-text {
   position: absolute;
   font-size: 20px;
@@ -81,7 +93,7 @@ main {
   -ms-animation: smooth 1s;
   animation: smooth 1s;
 }
-@-webkit-keyframes smooth {
+@keyframes smooth {
   0% {
     opacity: 0.77;
   }
