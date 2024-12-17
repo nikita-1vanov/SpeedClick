@@ -2,7 +2,7 @@
 import { app } from "./services/app.js";
 
 let BEST_RESULT = app.bestResultLocalStorage.getValue();
-let MAX_COUNT_CLICK = 5;
+let MAX_COUNT_CLICK = 25;
 export let COUNT_CLICK = 0;
 export let TOTAL_COUNT_CLICK = 0;
 
