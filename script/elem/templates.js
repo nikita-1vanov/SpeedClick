@@ -28,9 +28,12 @@ export class Template {
 
   get FOOTER_GITHUB_LINK_HTML() {
     return `
-      <a class="footer__gitlab_link"href='https://github.com/nikita-1vanov/SpeedClick'>
-        github
-      </a>
+      <div class="footer__github-block">
+        <img class="footer__github-img" src="./img/github.png">
+        <a class="footer__github-link" href='https://github.com/nikita-1vanov/SpeedClick'>
+          0.31.1
+        </a>
+      </div>
     `;
   }
 
