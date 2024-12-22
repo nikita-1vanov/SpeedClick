@@ -152,10 +152,12 @@ footer {
   text-align: right;
 }
 
+.footer__github-block,
 .footer__best-result-block {
   display: flex;
 }
 
+.footer__github-img,
 .footer__best-result-img {
   height: 25px;
   padding: 0 10px 0 10px;
@@ -170,13 +172,13 @@ footer {
   font-size: 14px;
 }
 
-.footer__gitlab_link {
+.footer__github-link {
   color: white;
   cursor: pointer;
   text-align: right;
 }
 
-.footer__gitlab_link:hover {
+.footer__github-link:hover {
   color: #9922fb;
 }
 
