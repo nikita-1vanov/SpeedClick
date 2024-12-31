@@ -157,7 +157,7 @@ footer {
   display: flex;
 }
 
-.footer__github-img,
+.footer__git-img,
 .footer__best-result-img {
   height: 25px;
   padding: 0 10px 0 10px;
@@ -239,7 +239,8 @@ footer {
     font-size: 40px;
     text-align: right;
   }
-
+  
+  .footer__git-img,
   .footer__best-result-img {
     height: 50px;
     padding: 0 10px 0 10px;
