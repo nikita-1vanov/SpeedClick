@@ -83,7 +83,7 @@ export class ActionService {
     if (app.selectors.bestResultSelector.locator === null) {
       app.selectors.countClicks.setStyle("text-align", "right");
     } else {
-      app.selectors.trashImageSelector.setStyle("display", "none");
+      this.hideTrashImage()
     }
   }
 
@@ -109,6 +109,12 @@ export class ActionService {
     });
   }
 
+  getMaxCountClick() {
+    const currentMaxClickValue = app.maxCountClicksLocalStorage.getValue();
+    const maxCountClick = currentMaxClickValue === null ? 25 : Number(currentMaxClickValue);
+    return maxCountClick;
+  }
+
   getMissClickPercent(totalClick, clickToButton) {
     const result = 100 - (clickToButton / totalClick) * 100;
     if (Number.isInteger(result)) {
@@ -122,5 +128,9 @@ export class ActionService {
     if (app.selectors.bestResultSelector.locator !== null) {
       app.selectors.trashImageSelector.setStyle("display", "none");
     }
+  }
+
+  hideIconSettings() {
+    app.selectors.iconSettingsSelector.setStyle("display", "none");
   }
 }

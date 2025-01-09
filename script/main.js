@@ -2,7 +2,7 @@
 import { app } from "./services/app.js";
 
 let BEST_RESULT = app.bestResultLocalStorage.getValue();
-let MAX_COUNT_CLICK = 25;
+let MAX_COUNT_CLICK = app.actions.getMaxCountClick();
 export let COUNT_CLICK = 0;
 export let TOTAL_COUNT_CLICK = 0;
 
@@ -19,6 +19,7 @@ export function startGame() {
   setTimeout(() => {
     app.actions.addSpeedButton(MAX_COUNT_CLICK, COUNT_CLICK);
     app.actions.changeFooterWhenSpeedButtonBlock();
+    app.actions.hideIconSettings();
     app.coordinates.setNewСoordinatesForSpeedButton();
     app.actions.addMissClickScript();
   }, 3000);
@@ -41,7 +42,6 @@ function missProcessing(event) {
 function clickProcessing() {
   COUNT_CLICK++;
   TOTAL_COUNT_CLICK++;
-  app.actions.hideTrashImage();
   app.actions.changeClickCounter(MAX_COUNT_CLICK, COUNT_CLICK);
 
   app.coordinates.setNewСoordinatesForSpeedButton();
@@ -63,9 +63,34 @@ function clickProcessing() {
       app.actions.addResultPage(averageClickPerSecond, missClickPercent);
     }
     app.selectors.trashImageSelector.setStyle("display", "block");
+    app.selectors.iconSettingsSelector.setStyle("display", "block");
   }
 }
 
+function changeMaxCountClickLocalStorage() {
+  const maxCountClicks = app.selectors.inputSettingsSelector.getValue();
+  if (maxCountClicks === "") {
+    app.selectors.errorMessageSelector.setText("The value must not be empty");
+  } else if (maxCountClicks % 1 !== 0) {
+    app.selectors.errorMessageSelector.setText("The value must be integer");
+  } else if (Number(maxCountClicks) < 2 || Number(maxCountClicks) > 999) {
+    app.selectors.errorMessageSelector.setText(
+      "The value must be between 2 and 999"
+    );
+  } else {
+    app.maxCountClicksLocalStorage.setValue(maxCountClicks);
+    app.selectors.errorMessageSelector.setText("");
+    location.reload();
+  }
+}
+
+function setVisibilitySettingsModal(option) {
+  app.selectors.errorMessageSelector.setText("");
+  app.selectors.modalSettingsSelector.setStyle("display", option);
+}
+
 window.clickProcessing = clickProcessing;
+window.changeMaxCountClickLocalStorage = changeMaxCountClickLocalStorage;
 window.missProcessing = missProcessing;
+window.setVisibilitySettingsModal = setVisibilitySettingsModal;
 window.startGame = startGame;

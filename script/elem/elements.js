@@ -24,6 +24,10 @@ export class WebElement {
     return this;
   }
 
+  getValue() {
+    return this.locator.value;
+  }
+
   removeElement(elem) {
     this.locator.removeChild(elem);
     return this;
