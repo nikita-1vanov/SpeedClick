@@ -22,12 +22,28 @@ export class Selectors {
     return new WebElement(document.createElement(elem));
   }
 
+  get errorMessageSelector() {
+    return new WebElement(document.querySelector(".modal__error-message"));
+  }
+
   get footerBlockSelector() {
     return new WebElement(document.querySelector("footer"));
   }
 
+  get iconSettingsSelector() {
+    return new WebElement(document.querySelector(".header__settings-img"));
+  }
+
+  get inputSettingsSelector() {
+    return new WebElement(document.querySelector(".modal__input"));
+  }
+
   get mainBlockSelector() {
     return new WebElement(document.querySelector("main"));
+  }
+
+  get modalSettingsSelector() {
+    return new WebElement(document.querySelector(".modal__block"));
   }
 
   get timerSelector() {

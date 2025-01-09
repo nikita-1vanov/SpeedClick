@@ -9,8 +9,11 @@
 
   <body>
     <header>
-      <div class="header__logo-text">speedclick</div>
-      <img class="header__logo-img" src="./img/logo.png" alt="" />
+      <div class="header__logo-block">
+        <div class="header__logo-text">speedclick</div>
+        <img class="header__logo-img" src="./img/logo.png" alt="" />
+      </div>
+      <img class="header__settings-img" src="./img/settings.png" onclick="setVisibilitySettingsModal('block')">
     </header>
 
     <main>
@@ -21,6 +24,18 @@
     </main>
 
     <footer style="display: flex; justify-content: right;"></footer>
+
+    <div class="modal__block">
+      <div class="modal__content">
+        <p>Enter the number of clicks</p>
+        <input type="text" class="modal__input" name="numberInput" placeholder="25" required>
+        <p class="modal__error-message"></p>
+        <div class="modal__button-container">
+          <button onclick="setVisibilitySettingsModal('none')">Cancel</button>
+          <button onclick="changeMaxCountClickLocalStorage()">Save</button>
+        </div>
+      </div>
+    </div>
   </body>
   <script src="./script/main.js" type="module"></script>
 </html>
