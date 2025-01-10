@@ -90,7 +90,8 @@ main {
   animation: hideblock 2s;
 }
 @keyframes hideblock {
-  0%, 99% {
+  0%,
+  99% {
     opacity: 0;
   }
   100% {
@@ -259,6 +260,10 @@ footer {
     height: 40px;
   }
 
+  .header__settings-img {
+    height: 80px;
+  }
+
   main {
     font-size: 90px;
   }
@@ -311,5 +316,29 @@ footer {
 
   .footer__best-result-tooltip {
     font-size: 32px;
+  }
+
+  .modal__content {
+    width: 600px;
+    font-size: 56px;
+  }
+
+  .modal__button-container {
+    margin-top: 120px;
+  }
+
+  .modal__button-container button {
+    padding: 30px 80px;
+    font-size: 38px;
+  }
+
+  .modal__input {
+    font-size: 90px;
+    width: 320px;
+  }
+
+  .modal__error-message {
+    font-size: 36px;
+    margin-top: 30px;
   }
 }
