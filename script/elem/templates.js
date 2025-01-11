@@ -31,7 +31,7 @@ export class Template {
       <div class="footer__github-block">
         <img class="footer__git-img" src="./img/github.png">
         <a class="footer__github-link" href='https://github.com/nikita-1vanov/SpeedClick'>
-          0.31.3
+          1.0.0
         </a>
       </div>
     `;
